@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# Get State
+# pactl list sinks | grep State | cut -d ':' -f2 | tr -d ' '
+#
+# Get Mute
+# pactl list sinks | grep Mute | cut -d ' ' -f2 | tr -d ' '
+# 
+# Get Volume
+# pactl list sinks | grep Volume | head -n 1 | cut -d ' ' -f6
+#
+# Toggle mute
+# pactl set-sink-mute @DEFAULT_SINK@ toggle
+#
+# set volume
+# pactl set-sink-volume @DEFAULT_SINK@ $number | +$number | -$number
+#
+SINK="@DEFAULT_SINK@"
+
+
+get_volume() {
+	isMute=`pactl list sinks | grep Mute | cut -d ' ' -f2 | tr -d ' '`
+
+	if [[ "$isMute" == "no" ]]; then
+		volume=`pactl list sinks | grep Volume | head -n 1 | cut -d '%' -f1 | cut -d '/' -f2 | tail | tr -d ' '`
+		echo "$volume"
+	else
+		echo "Mute"
+	fi
+}
+
+get_icon() {
+	vol="$(get_volume)"
+	current="${vol%%%}"
+	isMute=`pactl list sinks | grep Mute | cut -d ' ' -f2 | tr -d ' '`
+
+	if [[ "$isMute" == "no" ]]; then
+		if [[ "$current" -eq "0" ]]; then
+			echo "ﱝ" 
+		else
+			echo "墳"
+		fi
+	else
+		echo "ﱝ"
+	fi
+}
+
+inc_volume() {
+	pactl set-sink-volume $SINK +5%
+}
+
+dec_volume() {
+	pactl set-sink-volume $SINK -5%
+}
+
+toggle_mute() {
+	pactl set-sink-mute $SINK toggle
+}
+
+if [[ "$1" == "--get" ]]; then
+	get_volume
+elif [[ "$1" == "--icon" ]]; then
+	get_icon
+elif [[ "$1" == "--inc" ]]; then
+	inc_volume
+elif [[ "$1" == "--dec" ]]; then
+	dec_volume
+elif [[ "$1" == "--toggle" ]]; then
+	toggle_mute
+else
+	get_volume
+fi

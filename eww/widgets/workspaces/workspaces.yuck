@@ -1,0 +1,13 @@
+;; workspaces management
+(deflisten workspace "scripts/workspace")
+
+;; workspace widget
+(defwidget workspacesLayout []
+  (box
+    :class "workspacesWidgetLayout"
+    :halign "center"
+    (box
+      :class "workspacesWidgetLayoutHard2"
+      (literal
+        :content workspace
+        :valign "center"))))

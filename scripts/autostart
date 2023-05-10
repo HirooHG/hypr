@@ -1,0 +1,31 @@
+#!/usr/bin/bash
+
+# variables
+config=$HOME/.config/hypr
+scripts=$config/scripts
+
+# notification daemon
+dunst &
+
+# battery notification
+$scripts/default/battery_notif &
+
+/home/hiroo/Scripts/wificonnect &
+
+# screen locking when idle
+$scripts/default/idle_handler &
+
+# other
+wl-clip-persist --clipboard regular &
+wl-paste --watch cliphist store &
+
+dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
+pkill xdg-desktop-portal &
+
+/usr/lib/xdg-desktop-portal-hyprland &
+/usr/lib/xdg-desktop-portal &
+
+# just pipewire & wireplumber
+pipewire &
+pipewire-pulse &
+wireplumber &

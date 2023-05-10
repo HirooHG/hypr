@@ -1,0 +1,40 @@
+;; apps
+
+(defwidget apps[]
+  (box
+    :space-evenly true
+    :orientation "h"
+    :hexpand true
+    :halign "fill"
+    :class "apps_layout"
+    (app
+      :func "firefox"
+      :path "assets/firefox.png")
+    (app
+      :func "~/.config/hypr/newEww/scripts/exec_app thunderbird"
+      :path "assets/thunderbird.png")
+    (app
+      :func "postman"
+      :path "assets/postman.png")
+    (app
+      :func "~/.config/hypr/newEww/scripts/exec_app obs"
+      :path "assets/obs.png")
+    (app
+      :func "~/.config/hypr/newEww/scripts/exec_app discord"
+      :path "assets/discord.png")
+    (app
+      :func "~/.config/hypr/newEww/scripts/exec_app code"
+      :path "assets/code.png")
+    (app
+      :func "~/.config/hypr/newEww/scripts/exec_app studio"
+      :path "assets/studio.png")))
+
+
+(defwidget app [func path]
+  (box
+    :orientation "h"
+    (button
+      :onclick func
+      (image
+        :path path
+        :image-width 35))))

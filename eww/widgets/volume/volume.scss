@@ -1,0 +1,10 @@
+.volume {
+    background-color: $background0;
+    border-radius: 100%;
+    padding: 5px 20px 5px 20px;
+    color: $red_light;
+}
+.volbar trough highlight {
+    background-image: linear-gradient(to right, $red_hard 30%, $red_light 50%, $foreground0 100% *50);
+    border-radius: 10px;
+}

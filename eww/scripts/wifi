@@ -1,0 +1,14 @@
+#!/bin/sh
+
+essid=$(iwgetid | cut -d: -f2 | tr -d '"')
+ip=$(ip a | grep inet | grep wlan0 | cut -d ' ' -f6)
+
+if [ ! $ip ]; then
+  ip="disconnected"
+  essid="disconnected"
+fi
+
+case $1 in
+  id) echo $essid;;
+  ip) echo $ip;;
+esac

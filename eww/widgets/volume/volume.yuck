@@ -1,0 +1,20 @@
+;; volume
+(defwidget volume []
+    (box
+      :class "volume"
+      :valign "center"
+      :halign "center"
+      :space-evenly false
+      :spacing 5
+      :orientation "h"
+      :tooltip "volume"
+      (image
+        :class "volumeIcon"
+        :path "assets/volume.png"
+        :image-width 20)
+      (box
+        (label
+          :text volume_percent)
+        (label
+          :text "%"))))
+

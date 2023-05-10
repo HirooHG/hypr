@@ -1,0 +1,21 @@
+#!/bin/sh
+
+function app_launcher(){
+    wofi --show drun
+}
+
+doc() {
+    echo "Usage:
+    set_env [Options]
+
+    Options:
+        application_launcher    Runs wofi application launcher"
+}
+
+
+killall wofi
+
+case $1 in 
+  application_launcher) app_launcher   ;;
+  *) doc                            ;;
+esac

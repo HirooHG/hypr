@@ -1,0 +1,25 @@
+;; Variables for the whole project, injected in all yuck files
+
+;; listen
+(deflisten notifications "scripts/notifications")
+
+;; var
+(defvar eww "eww -c $HOME/.config/hypr/eww/bar")
+(defvar sink "@DEFAULT_SINK@")
+(defvar rightside false)
+(defvar vol_reveal false)
+
+;; poll 
+(defpoll clock_time         :interval "5s" "date '+\%I:\%M \%p'")
+(defpoll clock_time_sec     :interval "1s" "date '+\%I:\%M:\%S'")
+(defpoll volume_percent     :interval "1s" "scripts/sbvol --get")
+(defpoll brightness_percent :interval "5s" "light")
+
+(defpoll name               :interval "5m" `whoami`)
+(defpoll host               :interval "5m" `uname -n`)
+(defpoll packages :interval "5m" `pacman -Q | wc -l`)
+(defpoll kernal :interval "5m" `uname -r`)
+(defpoll wm :interval "5m" `echo $XDG_CURRENT_DESKTOP`)
+
+(defpoll id_wifi    :interval "30s" "scripts/wifi id")
+(defpoll ip_wifi    :interval "30s" "scripts/wifi ip")

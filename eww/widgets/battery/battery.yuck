@@ -1,0 +1,17 @@
+
+(defwidget battery []
+  (box
+    :class "battery"
+    :valign "center"
+    :halign "center"
+    :space-evenly false
+    :spacing 5
+    :orientation "h"
+    :tooltip "battery"
+    (label
+      :text "ϟ")
+    (box
+      (label
+        :text {EWW_BATTERY["BAT0"].capacity})
+      (label
+        :text "%"))))

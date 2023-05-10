@@ -1,0 +1,20 @@
+;; name widget
+
+(defwidget nameWidget[]
+  (box
+    :class "name-widget"
+    :orientation "h"
+    :hexpand false
+    :valign "center"
+    :space-evenly false
+    (label
+      :class "arch"
+      :text "")
+    (label
+      :text name)
+    (label
+      :class "at"
+      :text "@")
+    (label
+      :class "host"
+      :text host)))

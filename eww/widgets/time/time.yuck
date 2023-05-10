@@ -1,0 +1,9 @@
+
+(defwidget timeWidget []
+  (box
+    :class "time"
+    :valign "center"
+    :halign "center"
+    :tooltip clock_time_sec
+    (label
+      :text clock_time)))

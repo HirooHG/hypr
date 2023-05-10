@@ -1,0 +1,12 @@
+#!/bin/bash
+EWW_BIN="/usr/bin/eww -c $HOME/.config/hypr/eww"
+
+window=$(${EWW_BIN} windows | grep "$1")
+
+if [ $window ]; then
+    if [ $(echo "$window" | grep "*") ]; then
+        ${EWW_BIN} close "$1"
+    else
+        ${EWW_BIN} open "$window"
+    fi
+fi
