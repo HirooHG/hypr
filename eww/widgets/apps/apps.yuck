@@ -11,22 +11,22 @@
       :func "firefox"
       :path "assets/firefox.png")
     (app
-      :func "~/.config/hypr/newEww/scripts/exec_app thunderbird"
+      :func "~/.config/hypr/eww/scripts/exec_app thunderbird"
       :path "assets/thunderbird.png")
     (app
       :func "postman"
       :path "assets/postman.png")
     (app
-      :func "~/.config/hypr/newEww/scripts/exec_app obs"
+      :func "~/.config/hypr/eww/scripts/exec_app obs"
       :path "assets/obs.png")
     (app
-      :func "~/.config/hypr/newEww/scripts/exec_app discord"
+      :func "~/.config/hypr/eww/scripts/exec_app discord"
       :path "assets/discord.png")
     (app
-      :func "~/.config/hypr/newEww/scripts/exec_app code"
+      :func "~/.config/hypr/eww/scripts/exec_app code"
       :path "assets/code.png")
     (app
-      :func "~/.config/hypr/newEww/scripts/exec_app studio"
+      :func "~/.config/hypr/eww/scripts/exec_app studio"
       :path "assets/studio.png")))
 
 
