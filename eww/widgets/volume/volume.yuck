@@ -18,3 +18,47 @@
         (label
           :text "%"))))
 
+(defwindow volume_settings
+  :monitor 0
+  :exclusive false
+  :focusable true
+  :stacking "fg"
+  :geometry (geometry
+    :width "700px"
+    :height "400px"
+    :anchor "center left")
+  (volume_settings_layout))
+
+(defwidget volume_settings_layout []
+  (box
+    :class "volume_window"
+    :orientation "v"
+    (top_volume)
+    (bot_volume)))
+
+(defpoll device :interval "30s" "pactl list sinks | grep Description | cut -d ':' -f2 | xargs")
+
+(defwidget top_volume []
+  (box
+    :orientation "h"
+    :space-evenly true
+    (label 
+      :text device)))
+
+(defwidget bot_volume []
+  (box
+    :class "bot_volume"
+    :orientation "h"
+    :space-evenly true
+    :vexpand false
+    :hexpand false
+    :valign "center"
+    :halign "center"
+    (scale
+      :class "bot"
+      :width 200
+      :height 50
+      :value 50
+      :min 0
+      :max 100
+      :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%")))
