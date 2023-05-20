@@ -1,4 +1,6 @@
 
+;; battery widget 
+;; if battery isn't available then no error
 (defwidget battery []
   (box
     :class "battery"
@@ -7,11 +9,11 @@
     :space-evenly false
     :spacing 5
     :orientation "h"
-    :tooltip "battery"
+    :tooltip "${bat_stat} ${bat_stat == "Not Bat" ? "" : time_left_bat } "
     (label
       :text "ϟ")
     (box
       (label
-        :text {EWW_BATTERY["BAT0"].capacity})
+        :text bat_per)
       (label
         :text "%"))))

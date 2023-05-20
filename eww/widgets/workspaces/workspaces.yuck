@@ -1,5 +1,3 @@
-;; workspaces management
-(deflisten workspace "scripts/workspace")
 
 ;; workspace widget
 (defwidget workspacesLayout []

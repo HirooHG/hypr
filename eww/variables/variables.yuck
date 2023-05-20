@@ -2,6 +2,7 @@
 
 ;; listen
 (deflisten notifications "scripts/notifications")
+(deflisten workspace "scripts/workspace")
 
 ;; var
 (defvar eww "eww -c $HOME/.config/hypr/eww/bar")
@@ -11,15 +12,18 @@
 
 ;; poll 
 (defpoll clock_time         :interval "5s" "date '+\%I:\%M \%p'")
-(defpoll clock_time_sec     :interval "1s" "date '+\%I:\%M:\%S'")
+(defpoll date               :interval "1s" "date '+\%F'")
+
 (defpoll volume_percent     :interval "1s" "scripts/sbvol --get")
+(defpoll volume_desc        :interval "1s" "scripts/sbvol --desc")
 (defpoll brightness_percent :interval "5s" "light")
+(defpoll time_left_bat      :interval "5s" "scripts/battery --left")
+(defpoll bat_per            :interval "5s" "scripts/battery --bat")
+(defpoll bat_stat           :interval "5s" "scripts/battery --bat-st")
 
 (defpoll name               :interval "5m" `whoami`)
 (defpoll host               :interval "5m" `uname -n`)
-(defpoll packages :interval "5m" `pacman -Q | wc -l`)
 (defpoll kernal :interval "5m" `uname -r`)
-(defpoll wm :interval "5m" `echo $XDG_CURRENT_DESKTOP`)
 
 (defpoll id_wifi    :interval "10s" "scripts/wifi id")
 (defpoll ip_wifi    :interval "10s" "scripts/wifi ip")

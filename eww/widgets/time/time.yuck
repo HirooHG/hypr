@@ -4,6 +4,6 @@
     :class "time"
     :valign "center"
     :halign "center"
-    :tooltip clock_time_sec
+    :tooltip date
     (label
       :text clock_time)))

@@ -4,24 +4,3 @@
     padding: 5px 20px 5px 20px;
     color: $red_light;
 }
-.volbar trough highlight {
-    background-image: linear-gradient(to right, $red_hard 30%, $red_light 50%, $foreground0 100% *50);
-    border-radius: 10px;
-}
-
-.volume_window {
-    background-color: $background0_hard;
-    border-radius: 15px;
-}
-
-.bot trough highlight {
-    background-image: linear-gradient(to right, $red_hard 30%, $red_hard 50%, $red_hard 100% *50);
-    border-radius: 10px;
-    // background-color: $red_hard;
-}
-
-.bot {
-    background-color: black;
-    border: 1px solid red;
-    color: $red_hard;
-}

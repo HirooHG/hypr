@@ -1,15 +1,31 @@
 #!/bin/bash
 
-BAT=`ls /sys/class/power_supply | grep BAT | head -n 1`
+HASBAT=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep "power supply" | cut -d ':' -f2 | xargs)
 
 battery() {
-	cat /sys/class/power_supply/${BAT}/capacity
+	if [ ! "$HASBAT" = "no" ]; then
+		echo $(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep "percentage" | cut -d ':' -f2 | xargs | tr -d '%')
+	else
+		echo "100"
+	fi
 }
 battery_stat() {
-	cat /sys/class/power_supply/${BAT}/status
+	if [ ! "$HASBAT" = "no" ]; then
+		echo $(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep "state" | cut -d ':' -f2 | xargs | tr -d '%')
+	else
+		echo "No bat"
+	fi
+}
+time_left() {
+	if [ ! "$HASBAT" = "no" ]; then
+		echo $(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep "state" | cut -d ':' -f2 | xargs)
+	else
+		echo ""
+	fi
 }
 
 case "$1" in
 	--bat) battery;;
 	--bat-st) battery_stat;;
+	--left) time_left;;
 esac

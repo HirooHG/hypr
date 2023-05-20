@@ -1,56 +1,36 @@
 #!/bin/bash
 
-# Get State
-# pactl list sinks | grep State | cut -d ':' -f2 | tr -d ' '
-#
-# Get Mute
-# pactl list sinks | grep Mute | cut -d ' ' -f2 | tr -d ' '
-# 
-# Get Volume
-# pactl list sinks | grep Volume | head -n 1 | cut -d ' ' -f6
-#
-# Toggle mute
-# pactl set-sink-mute @DEFAULT_SINK@ toggle
-#
-# set volume
-# pactl set-sink-volume @DEFAULT_SINK@ $number | +$number | -$number
-#
 SINK="@DEFAULT_SINK@"
 
-
 get_volume() {
-	isMute=`pactl list sinks | grep Mute | cut -d ' ' -f2 | tr -d ' '`
+  isMute=$(pactl list sinks | grep -C 8 State | grep -C 8 RUNNING | grep Mute | cut -d ':' -f2 | xargs)
 
 	if [[ "$isMute" == "no" ]]; then
-		volume=`pactl list sinks | grep Volume | head -n 1 | cut -d '%' -f1 | cut -d '/' -f2 | tail | tr -d ' '`
+    volume=$(pactl list sinks | grep -C 8 State | grep -C 8 RUNNING | grep Volume | cut -d '/' -f2 | xargs | tr -d '%')
 		echo "$volume"
 	else
 		echo "Mute"
 	fi
 }
 
-get_icon() {
-	vol="$(get_volume)"
-	current="${vol%%%}"
-	isMute=`pactl list sinks | grep Mute | cut -d ' ' -f2 | tr -d ' '`
+get_desc() {
+  isRunning=$(pactl list sinks | grep -C 8 State | grep -C 8 RUNNING)
 
-	if [[ "$isMute" == "no" ]]; then
-		if [[ "$current" -eq "0" ]]; then
-			echo "ﱝ" 
-		else
-			echo "墳"
-		fi
+	if [[ "$isRunning" ]]; then
+    desc=$(pactl list sinks | grep -C 8 State | grep -C 8 RUNNING | grep Description | cut -d ':' -f2 | xargs)
+		echo "$desc"
 	else
-		echo "ﱝ"
+		echo "Volume"
 	fi
 }
 
+
 inc_volume() {
-	pactl set-sink-volume $SINK +5%
+	pactl set-sink-volume $SINK +10%
 }
 
 dec_volume() {
-	pactl set-sink-volume $SINK -5%
+	pactl set-sink-volume $SINK -10%
 }
 
 toggle_mute() {
@@ -59,8 +39,8 @@ toggle_mute() {
 
 if [[ "$1" == "--get" ]]; then
 	get_volume
-elif [[ "$1" == "--icon" ]]; then
-	get_icon
+elif [[ "$1" == "--desc" ]]; then
+	get_desc
 elif [[ "$1" == "--inc" ]]; then
 	inc_volume
 elif [[ "$1" == "--dec" ]]; then

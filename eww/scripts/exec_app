@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 case $1 in
-  code) code;;
+  code) ~/Dev/code/bin/code;;
   discord) discord;;
   studio) android-studio;;
   thunderbird) thunderbird;;
