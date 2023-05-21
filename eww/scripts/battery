@@ -18,7 +18,7 @@ battery_stat() {
 }
 time_left() {
 	if [ ! "$HASBAT" = "no" ]; then
-		echo $(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep "percentage" | cut -d ':' -f2 | xargs)
+		echo $(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep "time to empty" | cut -d ':' -f2 | xargs)
 	else
 		echo ""
 	fi
