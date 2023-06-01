@@ -12,6 +12,7 @@
 ;; right
 (include "widgets/battery/battery.yuck")
 (include "widgets/volume/volume.yuck")
+(include "widgets/sys/sys.yuck")
 (include "widgets/wifi/wifi.yuck")
 (include "widgets/time/time.yuck")
 

@@ -15,15 +15,20 @@ $scripts/default/battery_notif &
 # screen locking when idle
 $scripts/default/idle_handler &
 
+# mount HDD
+$scripts/mountHdd
+
 # other
+fcitx5 -d &
+
 wl-clip-persist --clipboard regular &
 wl-paste --watch cliphist store &
 
 dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
 pkill xdg-desktop-portal &
 
-/usr/lib/xdg-desktop-portal-hyprland &
 /usr/lib/xdg-desktop-portal &
+/usr/lib/xdg-desktop-portal-hyprland &
 
 # just pipewire & wireplumber
 pipewire &

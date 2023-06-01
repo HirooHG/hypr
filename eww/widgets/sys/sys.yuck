@@ -1,0 +1,35 @@
+
+;; var
+(defvar reboot_reveal false)
+
+(defwidget sys []
+  (box
+    :class "sys_buttons"
+    :orientation "h"
+    :space-evenly true
+    :halign "center"
+    :valign "center"
+    :spacing 20
+    (eventbox
+      :onhover "${EWW_CMD} update reboot_reveal=true"
+      :onhoverlost "${EWW_CMD} update reboot_reveal=false"
+      (button
+        :class "sys poweroff"
+        :halign "center"
+        :valign "center"
+        :width 50
+        :height 50
+        :onclick "scripts/sys pow"
+        "⏻"))
+    (revealer
+      :transition "slideright"
+      :duration "250ms"
+      :reveal reboot_reveal
+      (button
+        :class "sys reboot"
+        :halign "center"
+        :valign "center"
+        :width 50
+        :height 50
+        :onclick "scripts/sys reb"
+        "⏼"))))
