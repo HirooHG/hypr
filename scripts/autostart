@@ -10,7 +10,7 @@ dunst &
 # battery notification
 $scripts/default/battery_notif &
 
-/home/hiroo/Scripts/wificonnect &
+/home/hiroo/apps-config/scripts/wifi home &
 
 # screen locking when idle
 $scripts/default/idle_handler &
