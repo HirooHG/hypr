@@ -1,8 +1,0 @@
-
-#!/bin/bash
-
-case $1 in
-  pow) sudo poweroff;;
-  reb) sudo reboot;;
-  *) echo "nope";;
-esac

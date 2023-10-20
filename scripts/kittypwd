@@ -1,9 +1,0 @@
-#!/usr/bin/bash
-
-pid=$(hyprctl activewindow | grep pid | cut -d ':' -f2 | tr -d ' ' | tail)
-
-pid=$(echo $pid | cut -d ' ' -f2)
-
-pwd=$(pwdx $pid)
-pwd=$(echo $pwd | cut -d ' ' -f2)
-echo $pwd
