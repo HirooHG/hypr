@@ -1,0 +1,60 @@
+;; gen
+(include "variables/variables.yuck")
+(include "widgets/notifications/notifications.yuck")
+
+;; left
+(include "widgets/name/name.yuck")
+(include "widgets/apps/apps.yuck")
+
+;; center workspaces
+(include "widgets/workspaces/workspaces.yuck")
+
+;; right
+(include "widgets/battery/battery.yuck")
+(include "widgets/volume/volume.yuck")
+(include "widgets/sys/sys.yuck")
+(include "widgets/wifi/wifi.yuck")
+(include "widgets/time/time.yuck")
+
+;;bar layout
+(defwindow bar
+  :monitor 0
+  :exclusive false
+  :stacking "fg"
+  :windowtype "dock"
+  :geometry (geometry
+    :width "100%"
+    :height "50px"
+    :anchor "top center")
+  (bar_layout))
+
+(defwidget bar_layout []
+  (box
+    :class "bar_class"
+    :orientation "h"
+    (left)
+    (center)
+    (right)))
+
+(defwidget left []
+  (box
+    :class "left_mod"
+    :space-evenly false
+    :orientation "h"
+    (nameWidget)
+    (apps)))
+
+(defwidget center []
+  (box
+    :class "center_mod"
+    :orientation "h"
+    (workspacesLayout)))
+
+(defwidget right []
+  (box
+    :class "right_mod"
+    :orientation "h"
+    (battery)
+    (volume)
+    (wifi)
+    (timeWidget)))

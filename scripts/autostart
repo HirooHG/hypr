@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # variables
-config=$HOME/.config/hypr
+config=$HOME/apps-config/hyprland-config
 scripts=$config/scripts
 
 # notification daemon
@@ -10,7 +10,7 @@ dunst &
 # battery notification
 $scripts/default/battery_notif &
 
-/home/hiroo/apps-config/scripts/wifi.sh home &
+$HOME/apps-config/scripts/wifi.sh home &
 
 # screen locking when idle
 $scripts/default/idle_handler &
