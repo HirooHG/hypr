@@ -1,0 +1,18 @@
+#!/bin/bash
+
+function O() {
+  apps=("obsidian" "libreoffice" "obs")
+  start_app "${apps[@]}"
+}
+
+function start_app() {
+  arr=("$@")
+  app=$(echo "${arr[*]}" | tr ' ' '\n' | wofi --show dmenu)
+  if [ $app ]; then
+    $("$app")
+  fi
+}
+
+case $1 in
+  O) O ;;
+esac
