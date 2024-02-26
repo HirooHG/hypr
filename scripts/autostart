@@ -1,22 +1,19 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # variables
-config=$HOME/apps-config/hyprland-config
+config=$HOME/apps-config/hypr
 scripts=$config/scripts
 
 # notification daemon
 dunst &
 
 # battery notification
-$scripts/default/battery_notif &
+"$scripts"/default/battery_notif &
 
-$HOME/apps-config/scripts/wifi.sh home &
+"$HOME"/apps-config/scripts/bin/wifi home &
 
 # screen locking when idle
-$scripts/default/idle_handler &
-
-# mount HDD
-$scripts/mountHdd
+"$scripts"/default/idle_handler &
 
 # other
 fcitx5 -d &
@@ -30,7 +27,7 @@ pkill xdg-desktop-portal &
 /usr/lib/xdg-desktop-portal &
 /usr/lib/xdg-desktop-portal-hyprland &
 
-# just pipewire & wireplumber
+# just pipewire & wireplumber (audio)
 pipewire &
 pipewire-pulse &
 wireplumber &

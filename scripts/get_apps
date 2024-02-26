@@ -1,15 +1,15 @@
 #!/bin/bash
 
 function O() {
-  apps=("obsidian" "libreoffice" "obs")
+  apps=("obsidian" "obs")
   start_app "${apps[@]}"
 }
 
 function start_app() {
   arr=("$@")
   app=$(echo "${arr[*]}" | tr ' ' '\n' | wofi --show dmenu)
-  if [ $app ]; then
-    $("$app")
+  if [ "$app" ]; then
+    eval "$app"
   fi
 }
 

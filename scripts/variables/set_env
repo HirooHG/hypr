@@ -1,9 +1,9 @@
 #!/bin/bash
-save_location=~/apps-config/hyprland-config/scripts/variables/temp
+save_location=~/apps-config/hypr/scripts/variables/temp
 
 function setVar(){
-    checkENVDir $2
-    echo $1 > "$save_location/$2"
+    checkENVDir "$2"
+    echo "$1" > "$save_location/$2"
 }
 
 function checkENVDir() {
@@ -11,7 +11,7 @@ function checkENVDir() {
         mkdir $save_location
     fi
     if ! test -f "$save_location/$1"; then
-        touch $save_location/$1
+        touch $save_location/"$1"
     fi
 }
 
@@ -25,8 +25,8 @@ doc() {
 }
 
 case $1 in          #function #file param #file name
-    primary)		setVar $2 primary_screen	;;
-    background)		setVar $2 background        ;;
+    primary)		setVar "$2" primary_screen	;;
+    background)		setVar "$2" background        ;;
     help)           doc                         ;;
     *)              doc                         ;;            
 esac

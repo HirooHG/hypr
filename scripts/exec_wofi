@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function app_launcher(){
     wofi --show drun
