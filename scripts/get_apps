@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function O() {
-  apps=("obsidian" "obs")
+  apps=("obsidian" "opera" "obs")
   start_app "${apps[@]}"
 }
 
