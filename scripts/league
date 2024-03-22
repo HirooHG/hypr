@@ -1,0 +1,5 @@
+#!/bin/bash
+
+actions=("start" "stop")
+action=$(echo "${actions[*]}" | tr ' ' '\n' | wofi --show dmenu)
+eval "leagueoflegends $action"
