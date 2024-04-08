@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EWW="eww -c $HOME/apps-config/hyprland-config/eww/"
+EWW="eww -c $HOME/apps-config/hypr/eww/"
 focusmon=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .id')
 
 if [[ ! $(pidof eww) ]]; then
@@ -8,5 +8,5 @@ if [[ ! $(pidof eww) ]]; then
     sleep 1
 fi
 
-# ${EWW} open "bar"
+${EWW} open "bar"
 hyprctl dispatch focusmonitor "$focusmon"
