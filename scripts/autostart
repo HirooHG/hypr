@@ -1,22 +1,12 @@
 #!/bin/bash
 
 # variables
-config=$HOME/apps-config/hypr
-scripts=$config/scripts
+config=$HOME/apps-config/config/hypr
 
 # notification daemon
 dunst &
 
-# battery notification
-"$scripts"/default/battery_notif &
-
 "$HOME"/apps-config/scripts/bin/wifi home &
-
-# screen locking when idle
-"$scripts"/default/idle_handler &
-
-# other
-fcitx5 -d &
 
 wl-clip-persist --clipboard regular &
 wl-paste --watch cliphist store &

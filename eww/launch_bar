@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EWW="eww -c $HOME/apps-config/hypr/eww/"
+EWW="eww -c $HOME/apps-config/config/hypr/eww/"
 focusmon=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .id')
 
 if [[ ! $(pidof eww) ]]; then

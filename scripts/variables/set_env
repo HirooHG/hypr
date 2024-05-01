@@ -1,5 +1,5 @@
 #!/bin/bash
-save_location=~/apps-config/hypr/scripts/variables/temp
+save_location=~/apps-config/config/hypr/scripts/variables/temp
 
 function setVar(){
     checkENVDir "$2"
