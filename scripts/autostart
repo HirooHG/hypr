@@ -6,8 +6,6 @@ config=$HOME/apps-config/config/hypr
 # notification daemon
 dunst &
 
-"$HOME"/apps-config/scripts/bin/wifi home &
-
 wl-clip-persist --clipboard regular &
 wl-paste --watch cliphist store &
 
@@ -21,3 +19,5 @@ pkill xdg-desktop-portal &
 pipewire &
 pipewire-pulse &
 wireplumber &
+
+swww-daemon &
