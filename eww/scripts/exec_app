@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-case $1 in
-  code) ~/Dev/code/bin/code;;
-  discord) discord;;
-  studio) android-studio;;
-  thunderbird) thunderbird;;
-  obs) obs --minimize-to-tray;;
-esac
